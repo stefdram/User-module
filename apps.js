@@ -6,8 +6,8 @@ const passport = require('passport');
 const CONFIG = require('./src/config/index');
 
 require('dotenv').config();
-const port = process.env.PORT;
-const host = process.env.APP;
+const port = CONFIG.port;
+const host = CONFIG.app;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
