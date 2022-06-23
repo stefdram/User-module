@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
 
-require('')
-
 const sequelize = new Sequelize('usersDB', 'root', 'pass', {
   dialect: 'mysql',
 });

@@ -3,7 +3,7 @@ const { ExtractJwt } = require('passport-jwt');
 const passport = require('passport');
 
 const opts = {};
-const userTable = require('/Users/stefandanielramli/Desktop/User-module project/UserModule_using_sequelize/src/database/models/User.js');
+const userTable = require('/Users/stefandanielramli/Desktop/User-module project/User-module/src/database/models/User.js');
 
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = 'Random string';

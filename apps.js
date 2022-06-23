@@ -6,14 +6,13 @@ const passport = require('passport');
 const CONFIG = require('./src/config/index');
 
 require('dotenv').config();
-const port = CONFIG.port;
-const host = CONFIG.app;
+const port = process.env.PORT;
+const host = process.env.APP;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(passport.initialize());
 
-require('./loaders/sequelize');
 require('./src/config/passport');
 const router = require('./src/routes/function');
 

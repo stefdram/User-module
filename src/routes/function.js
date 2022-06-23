@@ -5,8 +5,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
-const userTable = require('/Users/stefandanielramli/Desktop/User-module project/UserModule_using_sequelize/src/database/models/User.js');
-require('/Users/stefandanielramli/Desktop/User-module project/UserModule_using_sequelize/src/config/passport.js');
+const userTable = require('/Users/stefandanielramli/Desktop/User-module project/User-module/src/database/models/User.js');
+require('/Users/stefandanielramli/Desktop/User-module project/User-module/src/config/passport.js');
 
 router.use(passport.initialize());
 
@@ -57,6 +57,15 @@ router.put('/user/update/:id', (req, res) => {
   res.redirect('/');
   res.send('Password changed');
 });
+
+router.delete('/delete/:id', (req, res) => {
+  userTable.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.send("User " + req.params.id + " deleted successfully");
+})
 
 router.post('/login/:id', async (req, res) => {
   const user = await userTable.findOne({ where: { id: req.params.id } });
