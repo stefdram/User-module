@@ -1,8 +1,5 @@
 const Sequelize = require('sequelize');
-
-const sequelize = new Sequelize('usersDB', 'root', 'pass', {
-  dialect: 'mysql',
-});
+const sequelize = require('../../../loaders/sequelize');
 
 const userTable = sequelize.define(
   'userTable',
@@ -30,12 +27,5 @@ const userTable = sequelize.define(
 );
 
 userTable.sync();
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection made successfully');
-  })
-  .catch((err) => console.log(err, 'this has error'));
 
 module.exports = userTable;
