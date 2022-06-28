@@ -3,7 +3,7 @@ const { ExtractJwt } = require('passport-jwt');
 const passport = require('passport');
 
 const opts = {};
-const userTable = require('/Users/stefandanielramli/Desktop/User-module project/User-module/src/database/models/User.js');
+const userTable = require('../database/models/User');
 
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = 'Random string';
@@ -11,7 +11,7 @@ opts.secretOrKey = 'Random string';
 passport.use(
   new JwtStrategy(opts, (jwt_payload, done) => {
     console.log(jwt_payload);
-    userTable.findOne({ id: jwt_payload.id }, (err, user) => {
+    userTable.findOne({ where: { id: jwt_payload.id } }, (err, user) => {
       if (err) {
         return done(err, false);
       }
